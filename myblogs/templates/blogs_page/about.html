@@ -1,0 +1,40 @@
+{% extends 'blogs_page/base.html' %}
+{% load staticfiles %}
+{% block header_extends %}
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/timeline.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+			<h2>本站建设</h2>
+			<div class="timeline timeline-single-column">
+                {% for about in about reversed %}
+                    				<div class="timeline-item timeline-item-arrow-sm">
+					<div class="timeline-point timeline-point-primary">
+						<i class="fa fa-star"></i>
+					</div>
+					<div class="timeline-event timeline-event-primary">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">{{ about.tit }}</h3>
+							</div>
+							<div class="panel-body">
+								{{ about.content }}
+							</div>
+													<div class="timeline-footer primary">
+							<p class="text-right">{{ about.time|date:"Y-m-d" }}</p>
+						</div>
+						</div>
+					</div>
+				</div>
+                {% endfor %}
+
+				<span class="timeline-label">
+					<button class="btn btn-danger"><i class="glyphicon glyphicon-list-alt"></i></button>
+				</span>
+			</div>
+        </div>
+
+    </div>
+{% endblock %}

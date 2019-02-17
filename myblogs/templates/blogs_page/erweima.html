@@ -1,0 +1,27 @@
+{% extends 'blogs_page/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <h4 class="place">您现在的位置是：TH博客&gt;二维码生成器</h4>
+    <br>
+    <div class="row">
+        <div class="col-xs-12 col-lg-9 col-md-8 col-sm-7">
+            <div class="panel panel-default">
+                <form action="" method="POST" id="form1">
+                    {% csrf_token %}
+                    <input type="text" class="form-control"placeholder="请输入需要生成的内容（如：https://www.baidu.com）" name="text">
+                    <br>
+                    <input type="submit" value="制作" class="btn btn-primary" id="avatar-input"onclick="window.location.reload(location.href+'?time='+((new Date()).getTime()))" style="margin-left: 47%">
+                        <br><small style="font-size: xx-small;margin-left: 3%">使用注意事项：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果出现点击制作后二维码不刷新，请清除浏览器缓存或者开启无痕模式！</small>
+                </form>
+                <br><br>
+                <br><br>
+                 <div id="preview" style="text-align: center">
+                    <h3>效果如下：</h3>
+{#                    <img src="{% static 'images/test.png' %}">#}
+                     <img src="{% static 'images/test.png' %}">
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

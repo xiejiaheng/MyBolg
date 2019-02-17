@@ -1,0 +1,33 @@
+{% extends 'blogs_page/base.html' %}
+{% block content %}
+    <h4 class="place">您现在的位置是：TH博客&gt;搜索结果</h4>
+    <div class="row">
+        <div class="col-xs-12 col-lg-9 col-md-8 col-sm-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">搜索结果（一共有{{ post_list|length }}篇博客）</div>
+                <div class="panel-body">
+                  {% if search_err %}
+                 <p>{{ search_err }}</p>
+                {% endif %}
+                    {% for blog in post_list reversed%}
+                        <div class="blog">
+                            <h4><a href="{% url 'info' blog.id %}">{{ blog.title }}</a></h4>
+                            <p class="blog-info">
+                                <span class="glyphicon glyphicon-user">吸血姬</span>&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-tag"><a href="#">{{ blog.kind }}</a></span>&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-calendar">{{ blog.created_time|date:"Y-m-d" }}</span>
+                            </p>
+                            <p>{{ blog.content|truncatechars:100 }}</p>
+                        </div>
+                    {% empty %}
+                        <div class="blog">
+                            <h4>--  暂无博客，敬请期待.... --</h4>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--bloglist end-->
+{% endblock %}
+

@@ -1,0 +1,37 @@
+{% extends 'book_page/base.html' %}
+{% block content %}
+        <h2 class="place">您现在的位置是：网站首页&gt; <a href="/">技术分享</a></h2>
+
+        <div class="bloglist">
+            <ul>
+                {% for blogs in cus_list reversed %}
+                <li><i class="blogpic"><a href="{% url 'info' blogs.id %}"><img src="/static/images/1.jpg" alt=""> </a></i>
+                    <dl>
+                        <dt><a href="{% url 'info' blogs.id %}" target="_blank">{{ blogs.title }}</a></dt>
+                        <dd><span class="bloginfo">{{ blogs.content }}</span>
+                            <p class="timeinfo">
+                                <span class="lanmu"><a href="#" target="_blank">{{ blogs.kind }}</a></span>
+                                <span class="date">{{ blogs.created_time}}</span>
+                            </p>
+                            <a class="read" href="{% url 'info' blogs.id %}">阅读更多</a></dd>
+                    </dl>
+                </li>
+                {%  endfor %}
+            </ul>
+        </div>
+        <!--bloglist end-->
+        <div class="pagelist">
+        <a href="#" ><b>共{{ pages_num }}页</b></a>
+        {% if cus_list.has_previous %}
+            <a href="?page={{ cus_list.previous_page_number }}" aria-label="Previous"><b aria-hidden="true">上一页</b></a>
+        {% endif %}
+
+        {% for pg in cus_list.paginator.page_range %}
+            <a href="?page={{ pg }}" class="active"><b>{{ pg }}</b></a>
+        {% endfor %}
+
+        {% if cus_list.has_next %}
+            <a href="?page={{ cus_list.next_page_number}}" aria-label="Next"><b aria-hidden="true">下一页</b></a>
+        {% endif %}
+{% endblock %}
+

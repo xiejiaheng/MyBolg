@@ -1,0 +1,29 @@
+{% extends 'blogs_page/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <h4 class="place">您现在的位置是：TH博客&gt;图片文字提取</h4>
+    <br>
+    <div class="row">
+        <div class="col-xs-12 col-lg-12 col-md-8 col-sm-7">
+            <div class="panel panel-default">
+                <form  role="form" style="margin-left: 2%"   method="post" id="imgform" enctype="multipart/form-data" action="" >
+                    <br>
+                    <h2>请上传需要识别的图片：</h2>
+                    <br>
+                    <input type="file" name="uploadImage" id="uploadImage">
+                    <br>
+                    <input type="submit" value="提交" id="imgbtn" class="btn btn-default">
+                    <br>
+                    <small style="font-size: xx-small">使用注意事项：1.识别语言类型现在只支持中英文。<br>2.图片大小应在4M内，最短边至少15px，最长边最大4096px，图像越小效率越高，支持：JPEG,JPG,PNG,BMP <br>3.付费接口请勿频繁使用！！！！！！！！！！1</small>
+                </form>
+                <br><br><br>
+                    <div class="panel panel-default panel-danger" style="width: 60%;margin-left: 20%">
+                        <div class="panel-heading">识别结果：</div>
+                        <div class="panel-body ">
+                            <p class="error_msg">{{ text }}</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'blogs_page/base.html' %}
+{% load staticfiles %}
+{% block header_extends %}
+    <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">注册</h3>
+                </div>
+                <div class="panel-body ">
+                    <form action="" method="POST" class=" ">
+                        {% csrf_token %}
+                        {% for field in reg_form %}
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+
+                            {{  field }}
+
+                            <p class="text-center">{{ field.errors.as_text }}</p>
+                        {% endfor %}
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder=输入手机"验证码" aria-describedby="basic-addon2" name = 'python_code'>
+                            <span class="input-group-addon btn " style="cursor:pointer" id="basic-addon2">获取验证码</span>
+                        </div>
+                        <p>{{ yzmcw }}</p>
+                        <br>
+                        <span class="pull-left text-danger">{{ reg_form.non_field_errors }}</span>
+                        <input type="submit" value="注册" class="btn btn-primary pull-right ">
+                    </form>
+                 </div>
+            </div>
+        </div>
+    </div>
+<script>
+    $('#basic-addon2').click(function ( ){
+        var telephone = $("input[name='telephone']").val();
+        $.get("/phone_code/",{'telephone':telephone})
+        alert('验证码已发送，请注意查收！')
+    })
+</script>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+ul{
+    list-style-type: none;
+}
+.blog-type{
+    list-style-type: none;
+}
+div.blog{
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #eee;
+}
+div.blog h4{
+    margin-top: 0.5em;
+}
+div.blog p.blog-info{
+    margin-bottom: 0;
+}
+ul.blog-info-description{
+    margin-bottom: 1em;
+}
+ul.blog-info-description li{
+    display: inline-block;
+    margin-right: 2em;
+}
+div.blog-content p{
+    text-indent: 2em;
+}
+image{
+    margin-left: 2em;
+}
+div.blog p.blog-info{
+    margin-bottom: 0;
+}
